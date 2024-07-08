@@ -1,0 +1,46 @@
+/* Navbar*/
+
+.navbar-custom {
+    background-color: rgb(87, 13, 13);
+}
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+    color: white !important; 
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.navbar-custom .btn-outline-success {
+    color: white; 
+    background-color: #800000; 
+    border-color: white; 
+}
+
+.navbar-custom .btn-outline-success:hover {
+    color: rgb(0, 0, 0); 
+    background-color: #ffffff; 
+    border-color: rgb(0, 0, 0); 
+}
+.navbar-custom .btn-outline-success:active {
+    color: white  !important;; 
+    background-color: #ebd035 !important; 
+    border-color: white  !important;;
+}
+
+
+/*  buscador */
+
+@media (max-width: 991.98px) {
+
+
+    .form-inline .form-control {
+        width: 80%;
+        margin-bottom: 10px;
+    }
+
+}
+
+
+
+
+   
