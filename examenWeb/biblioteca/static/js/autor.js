@@ -17,6 +17,8 @@ document.getElementById('searchInput').addEventListener('input', function() {
 
     if (query && hasResults) {
         autoresTitulo.style.display = 'none';
+    } else if (query && !hasResults) {
+        noResults.style.display = 'block';
     } else {
         autoresTitulo.style.display = 'block';
     };

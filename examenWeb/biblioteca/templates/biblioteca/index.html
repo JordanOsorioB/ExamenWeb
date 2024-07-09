@@ -121,7 +121,8 @@
 
 
 <div class="container mt-5">
-  <h1>Buscador </h1>
+  <h1><img src="{% static 'img/lupa.webp' %}" alt="" style="width: 45px; margin-left: 15px;"> Buscador </h1>
+  
   <input type="text" id="searchInput" class="form-control" placeholder="Buscar por libro, autor o categoría...">
   <br>
   <div id="seccionLibros" class="container">
@@ -142,13 +143,13 @@
               </div>
           {% endfor %}
       </div>
-      <p id="noResults" style="display: none;">Sin resultados.</p>
+      <p id="noResults" style="display: none;">Sin resultados para esta busqueda.</p>
   </div>
 
   <br><br>
 
   <div id="seccionAutores" class="container">
-    <h2 id="autoresTitulo">Sección de Autores</h2><br><br>
+    <h2 id="autoresTitulo">Autores</h2><br><br>
     <div class="row">
         {% for autor in Autores %}
             <div class="col-md-4 libro-card">
@@ -158,7 +159,7 @@
                         <h5 class="card-title">{{ autor.nombre }}</h5>
                         <p class="card-text">Nacionalidad: {{ autor.nacionalidad }}</p>
                         <p class="card-categoria">{{ autor.categoria }}</p>
-                        <a id="buscarAutorBtn " href="libros" role="button">Ver más...</a>
+                        <a id="buscarAutorBtn " href="autor" role="button">Ver más...</a>
 
                     </div>
                 </div>
@@ -169,14 +170,14 @@
   <br><br>
   <div class="container mt-5">
     <div class="row" id="seccionCategorias">
-        <h2 id="categoriasTitulo" class="col-12">Sección de Categorías</h2><br><br><br><br>
+        <h2 id="categoriasTitulo" class="col-12">Categorías</h2><br><br><br><br>
         {% for categoria in Categorias %}
         <div class="col-md-4 libro-card">
             <div class="card mb-4">
                 <div class="card-body">
                     <h5 class="card-title">{{ categoria.nombre_categoria }}</h5>
                     <p class="card-text">{{ categoria.descripcion }}</p>
-                    <a id="buscarCategoriaBtn " href="libros" role="button">Ver más...</a>
+                    <a id="buscarCategoriaBtn " href="categoria" role="button">Ver más...</a>
                 </div>
             </div>
             

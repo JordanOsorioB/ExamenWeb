@@ -39,7 +39,7 @@
 
 
 
-  <div class="container mt-5">
+<div class="container mt-5">
     <h1>Buscador </h1>
     <input type="text" id="searchInput" class="form-control" placeholder="Buscar por categoría...">
     <br>
@@ -51,15 +51,15 @@
               <div class="card-body">
                   <h5 class="card-title">{{ categoria.nombre_categoria }}</h5>
                   <p class="card-text">{{ categoria.descripcion }}</p>
-                  <a id="buscarCategoriaBtn " href="libros" role="button">Ver más...</a>
               </div>
           </div>
           
       </div>
       
       {% endfor %}
-  </div>
-  </div>
+    </div>
+    <p id="noResults" style="display: none;">Sin resultados para esta busqueda.</p>
+</div>
 
 
 

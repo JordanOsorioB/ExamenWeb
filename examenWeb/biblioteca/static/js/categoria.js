@@ -17,6 +17,8 @@ document.getElementById('searchInput').addEventListener('input', function() {
 
     if (query && hasResults) {
         categoriasTitulo.style.display = 'none';
+    } else if (query && !hasResults) {
+        noResults.style.display = 'block';
     } else {
         categoriasTitulo.style.display = 'block';
     };

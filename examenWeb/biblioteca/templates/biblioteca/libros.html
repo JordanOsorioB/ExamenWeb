@@ -56,14 +56,14 @@
                             <h5 class="card-title">{{ libro.titulo }}</h5>
                             <p class="card-text">{{ libro.autor }}</p>
                             <p class="card-text">{{ libro.categoria }}</p>
-                            <a id="buscarLibroBtn"  href="libros" role="button">Ver más...</a>
+                            <p class="card-text">{{ libro.descripcion_breve }}</p>
                         </div>
                     </div>
                     
                 </div>
             {% endfor %}
         </div>
-  
+        <p id="noResults" style="display: none;">Sin resultados para esta busqueda.</p>
     </div>
   </div>
 
