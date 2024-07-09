@@ -41,6 +41,32 @@
 
 
 
+
+  <div class="container mt-5">
+    <h1>Buscador </h1>
+    <input type="text" id="searchInput" class="form-control" placeholder="Buscar por autor...">
+    <br>
+    <div id="seccionAutores" class="container">
+      <h2 id="autoresTitulo">Sección de Autores</h2><br><br>
+      <div class="row">
+          {% for autor in Autores %}
+              <div class="col-md-4 libro-card">
+                  <div class="card mb-4 shadow-sm">
+                      <img src="{% static 'img/' %}{{ autor.foto_autor }}" class="card-img-top" alt="{{ autor.foto_autor }}">
+                      <div class="card-body">
+                          <h5 class="card-title">{{ autor.nombre }}</h5>
+                          <p class="card-text">Nacionalidad: {{ autor.nacionalidad }}</p>
+                          <p class="card-text">{{ autor.descripcion }}</p>
+                          <a id="buscarAutorBtn " href="libros" role="button">Ver más...</a>
+  
+                      </div>
+                  </div>
+              </div>
+          {% endfor %}
+      </div>
+    </div>
+  </div>
+
   <footer class="bg-dark text-white mt-5">
     <div class="container py-4">
       <div class="row">
@@ -73,12 +99,15 @@
 
 
 
-
+  <br><br>
 
 
 
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-  
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+<script src="{% static 'js/autor.js' %}"></script>
+</body>
 </body>
 </html>

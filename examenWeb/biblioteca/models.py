@@ -7,6 +7,7 @@ class Autor(models.Model):
 			nacionalidad  = models.CharField(max_length=20, blank=False, null=False)
 			descripcion	  = models.CharField(max_length=500)
 			foto_autor    = models.CharField(max_length=100)
+			categoria 	  = models.CharField( max_length=50)
 
 class Libro(models.Model):
 			id_libro          = models.AutoField(db_column="idLibro", primary_key=True)
