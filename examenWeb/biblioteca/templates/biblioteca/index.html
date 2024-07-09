@@ -14,6 +14,8 @@
 </head>
 <body>
 
+
+
   <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
     <a class="navbar-brand" href="index"> 
         <img src="{% static 'img/icono2.png' %}" alt="" style="width: 65px; margin-left: 50px;">    Biblioteca  Ramanujuan
@@ -118,67 +120,74 @@
 
 
 
-<br><br><br><br><br>
-
 <div class="container mt-5">
+  <h1>Buscador </h1>
+  <input type="text" id="searchInput" class="form-control" placeholder="Buscar por libro, autor o categoría...">
+  <br>
   <div id="seccionLibros" class="container">
-      <h2>Libros: </h2><br><br>
-      <div class="row">
+      <h2 id="librosTitulo">Libros: </h2><br><br>
+      <div class="row" id="librosContainer">
           {% for libro in Libros %}
-              <div class="col-md-4">
+              <div class="col-md-4 libro-card">
                   <div class="card mb-4 shadow-sm">
                       <img src="{% static 'img/' %}{{ libro.portada }}" class="card-img-top" alt="{{ libro.titulo }}">
                       <div class="card-body">
                           <h5 class="card-title">{{ libro.titulo }}</h5>
                           <p class="card-text">{{ libro.descripcion_breve }}</p>
+                          <a id="buscarLibroBtn"  href="libros" role="button">Ver más...</a>
                       </div>
                   </div>
+                  
               </div>
           {% endfor %}
       </div>
+
   </div>
 
-  <a class="btn btn-primary btn-lg scroll-link text-center" href="libros" role="button" >Buscar libro</a>
-</div>
+  <br><br>
 
+  <div id="seccionAutores" class="container">
+    <h2 id="autoresTitulo">Sección de Autores</h2><br><br>
+    <div class="row">
+        {% for autor in Autores %}
+            <div class="col-md-4 libro-card">
+                <div class="card mb-4 shadow-sm">
+                    <img src="{% static 'img/' %}{{ autor.foto_autor }}" class="card-img-top" alt="{{ autor.foto_autor }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ autor.nombre }}</h5>
+                        <p class="card-text">Nacionalidad: {{ autor.nacionalidad }}</p>
+                        <p class="card-text">{{ autor.descripcion }}</p>
+                        <a id="buscarAutorBtn " href="libros" role="button">Ver más...</a>
 
-
-
-<br><br>
-<div id="seccionAutores" class="container">
-  <h2>Sección de Autores</h2>
-  <div class="row">
-      {% for autor in Autores %}
-          <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                  <img src="{% static 'img/' %}{{ autor.foto_autor }}" class="card-img-top" alt="{{ autor.foto_autor }}">
-                  <div class="card-body">
-                      <h5 class="card-title">{{ autor.nombre }}</h5>
-                      <p class="card-text">Nacionalidad: {{ autor.nacionalidad }}</p>
-                      <p class="card-text">{{ autor.descripcion }}</p>
-                  </div>
-              </div>
-          </div>
-      {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
   </div>
-</div>
-<br><br>
-<div class="container mt-5">
-  <div class="row" id="seccionCategorias">
-      <h2 class="col-12">Sección de Categorías</h2><br><br>
-      {% for categoria in Categorias %}
-      <div class="col-md-4">
-          <div class="card mb-4">
-              <div class="card-body">
-                  <h5 class="card-title">{{ categoria.nombre_categoria }}</h5>
-                  <p class="card-text">{{ categoria.descripcion }}</p>
-              </div>
-          </div>
-      </div>
-      {% endfor %}
-  </div>
+  <br><br>
+  <div class="container mt-5">
+    <div class="row" id="seccionCategorias">
+        <h2 id="categoriasTitulo" class="col-12">Sección de Categorías</h2><br><br><br><br>
+        {% for categoria in Categorias %}
+        <div class="col-md-4 libro-card">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">{{ categoria.nombre_categoria }}</h5>
+                    <p class="card-text">{{ categoria.descripcion }}</p>
+                    <a id="buscarCategoriaBtn " href="libros" role="button">Ver más...</a>
+                </div>
+            </div>
+            
+        </div>
+        
+        {% endfor %}
+    </div>
+  </div><br>
+ 
 </div>
 
+<br><br><br><br><br>
 
 
 
@@ -226,6 +235,49 @@
 <script>
     AOS.init();
 
+    
+</script>
+<script>
+
+    document.getElementById('searchInput').addEventListener('input', function() {
+        const query = this.value.toLowerCase();
+        const cards = document.querySelectorAll('.libro-card');
+        const librosTitulo = document.getElementById('librosTitulo');
+        const buscarLibroBtn = document.getElementById('buscarLibroBtn');
+        const autoresTitulo = document.getElementById('autoresTitulo');
+        const buscarAutorBtn = document.getElementById('buscarAutorBtn');
+        const categoriasTitulo = document.getElementById('categoriasTitulo');
+        const buscarCategoriaBtn = document.getElementById('buscarCategoriaBtn')
+
+        let hasResults = false;
+
+        cards.forEach(card => {
+            const title = card.querySelector('.card-title').textContent.toLowerCase();
+            if (title.includes(query)) {
+                card.style.display = 'block';
+                hasResults = true;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        if (query && hasResults) {
+            librosTitulo.style.display = 'none';
+           // buscarLibroBtn.style.display = 'none';
+            autoresTitulo.style.display = 'none';
+            //buscarAutorBtn.style.display = 'none';
+            categoriasTitulo.style.display = 'none';
+           // buscarCategoriaBtn.style.display = 'none';
+        } else {
+            librosTitulo.style.display = 'block';
+            //buscarLibroBtn.style.display = 'block';
+            autoresTitulo.style.display = 'block';
+            //buscarAutorBtn.style.display = 'block';
+            categoriasTitulo.style.display = 'block';
+            //buscarCategoriaBtn.style.disple = 'block'
+        };
+    });
+</script>
 </script>
 </body>
 </html>

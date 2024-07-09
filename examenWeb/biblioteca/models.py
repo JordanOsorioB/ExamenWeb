@@ -14,6 +14,9 @@ class Libro(models.Model):
 			año_publicacion   = models.DateField(blank=False, null=False) 
 			descripcion_breve = models.CharField(max_length=500,default='Sin descripción', blank=True, null=False)
 			portada           = models.CharField(max_length=100,null=True, blank=True)
+			autor 			  = models.CharField( max_length=50)
+			categoria 		  = models.CharField( max_length=50)
+
 			
 class Categoria(models.Model):
 			id_categoria      = models.AutoField(db_column="idCategoria", primary_key=True)

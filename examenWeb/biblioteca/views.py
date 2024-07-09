@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import *
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -63,4 +64,6 @@ def libros(request):
 		"Libros" : Libros
 	}
 	return render (request, 'biblioteca/libros.html', context)
+
+
 

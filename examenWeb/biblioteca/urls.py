@@ -5,5 +5,5 @@ urlpatterns = [
 			path('index', views.index, name="index"),
 			path('categoria', views.categoria, name="categoria"),
             path('libros', views.libros, name="libros"),
-			path('autor', views.autor, name="autor")         
+			path('autor', views.autor, name="autor")
 		]
