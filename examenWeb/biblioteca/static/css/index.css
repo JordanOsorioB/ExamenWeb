@@ -5,8 +5,41 @@
     object-fit: cover; 
 }
 
+/*Carrusel jumbotron*/
 
 
+.jumbotron.custom-bg-1 {
+    background-color: #c45f4d; 
+    color: white;
+}
 
+.jumbotron.custom-bg-2 {
+    background-color: #ce576a; 
+    color: white;
+}
 
+.jumbotron.custom-bg-3 {
+    background-color: #e49f37;
+    color: white;
+}
 
+/* Tarjeta de libros, autores y categorias*/
+
+.card {
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-img-top {
+    max-width: 100%;
+    height: 500px;
+    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsión */
+}

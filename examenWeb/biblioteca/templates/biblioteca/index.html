@@ -4,16 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biblioteca</title>
+    <title>Biblioteca Ramanujuan</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link href="{% static 'css/navbar.css' %}" rel="stylesheet">
     <link href="{% static 'css/index.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+
 </head>
 <body>
 
   <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
     <a class="navbar-brand" href="index"> 
-        <img src="{% static 'img/icono2.png' %}" alt="" style="width: 65px; margin-left: 50px;">    Biblioteca 
+        <img src="{% static 'img/icono2.png' %}" alt="" style="width: 65px; margin-left: 50px;">    Biblioteca  Ramanujuan
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -64,13 +67,123 @@
     </a>
   </div>
 
-  <div class="jumbotron">
-    <h1 class="display-4">Bienvenido a la Biblioteca Jordania</h1>
-    <p class="lead">Descubre un mundo de conocimiento y aventuras en nuestra colección de libros y recursos.</p>
-    <hr class="my-4">
-    <p>Explora nuestras secciones para más información y actividades.</p>
-    <a class="btn btn-primary btn-lg" href="#libraryCarousel" role="button">Ver más</a>
+
+  <div id="libraryCarousel2" class="carousel slide" data-ride="carousel">
+    <ul class="carousel-indicators">
+        <li data-target="#libraryCarousel2" data-slide-to="0" class="active"></li>
+        <li data-target="#libraryCarousel2" data-slide-to="1"></li>
+        <li data-target="#libraryCarousel2" data-slide-to="2"></li>
+        <li data-target="#libraryCarousel2" data-slide-to="3"></li>
+    </ul>
+
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+          <div class="jumbotron text-center custom-bg-1">
+              <h1 class="display-4">Bienvenido a la Biblioteca Ramanujuan</h1>
+              <p class="lead">Descubre tu libro favorito y sumérgete en un mundo de conocimiento y aventuras.</p>
+              <hr class="my-4">
+              <p>Explora nuestras secciones para más información y actividades.</p>
+              <a class="btn btn-primary btn-lg scroll-link" href="#seccionLibros" role="button">Ver más...</a>
+          </div>
+      </div>
+      <div class="carousel-item">
+          <div class="jumbotron text-center custom-bg-2">
+              <h1 class="display-4">Bienvenido a la Biblioteca Ramanujuan</h1>
+              <p class="lead">Conoce más sobre tus autores favoritos y sus obras.</p>
+              <hr class="my-4">
+              <p>Explora nuestras secciones para más información y actividades.</p>
+              <a class="btn btn-primary btn-lg scroll-link" href="#seccionAutores" role="button">Ver más...</a>
+          </div>
+      </div>
+      <div class="carousel-item">
+          <div class="jumbotron text-center custom-bg-3">
+              <h1 class="display-4">Bienvenido a la Biblioteca Ramanujuan</h1>
+              <p class="lead">Explora tu categoría favorita y descubre nuevas lecturas.</p>
+              <hr class="my-4">
+              <p>Explora nuestras secciones para más información y actividades.</p>
+              <a class="btn btn-primary btn-lg scroll-link" href="#seccionCategorias" role="button">Ver más...</a>
+          </div>
+      </div>
   </div>
+  
+  
+    <a class="carousel-control-prev" href="#libraryCarousel2" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#libraryCarousel2" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+</div>
+
+
+
+
+<br><br><br><br><br>
+
+<div class="container mt-5">
+  <div id="seccionLibros" class="container">
+      <h2>Libros: </h2><br><br>
+      <div class="row">
+          {% for libro in Libros %}
+              <div class="col-md-4">
+                  <div class="card mb-4 shadow-sm">
+                      <img src="{% static 'img/' %}{{ libro.portada }}" class="card-img-top" alt="{{ libro.titulo }}">
+                      <div class="card-body">
+                          <h5 class="card-title">{{ libro.titulo }}</h5>
+                          <p class="card-text">{{ libro.descripcion_breve }}</p>
+                      </div>
+                  </div>
+              </div>
+          {% endfor %}
+      </div>
+  </div>
+
+  <a class="btn btn-primary btn-lg scroll-link text-center" href="libros" role="button" >Buscar libro</a>
+</div>
+
+
+
+
+<br><br>
+<div id="seccionAutores" class="container">
+  <h2>Sección de Autores</h2>
+  <div class="row">
+      {% for autor in Autores %}
+          <div class="col-md-4">
+              <div class="card mb-4 shadow-sm">
+                  <img src="{% static 'img/' %}{{ autor.foto_autor }}" class="card-img-top" alt="{{ autor.foto_autor }}">
+                  <div class="card-body">
+                      <h5 class="card-title">{{ autor.nombre }}</h5>
+                      <p class="card-text">Nacionalidad: {{ autor.nacionalidad }}</p>
+                      <p class="card-text">{{ autor.descripcion }}</p>
+                  </div>
+              </div>
+          </div>
+      {% endfor %}
+  </div>
+</div>
+<br><br>
+<div class="container mt-5">
+  <div class="row" id="seccionCategorias">
+      <h2 class="col-12">Sección de Categorías</h2><br><br>
+      {% for categoria in Categorias %}
+      <div class="col-md-4">
+          <div class="card mb-4">
+              <div class="card-body">
+                  <h5 class="card-title">{{ categoria.nombre_categoria }}</h5>
+                  <p class="card-text">{{ categoria.descripcion }}</p>
+              </div>
+          </div>
+      </div>
+      {% endfor %}
+  </div>
+</div>
+
+
+
+
+
+
 
 
 
@@ -98,7 +211,7 @@
       </div>
       <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
         <h5 class="font-weight-bold text-uppercase">Derechos de Autor</h5>
-        <p class="mb-0">&copy; 2024 Biblioteca Jordania. Todos los derechos reservados.</p>
+        <p class="mb-0">&copy; 2024 Biblioteca Ramanujuan. Todos los derechos reservados.</p>
       </div>
     </div>
   </div>
@@ -109,6 +222,10 @@
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+    AOS.init();
 
+</script>
 </body>
 </html>
