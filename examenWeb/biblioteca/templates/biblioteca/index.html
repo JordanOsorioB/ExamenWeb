@@ -70,6 +70,29 @@
   </div>
 
 
+
+  <br><br><br>
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-12 text-center">
+        <h1>Sobre Nosotros</h1><br><br>
+        <p>
+          Bienvenidos a la Biblioteca Ramanujuan, un espacio dedicado al conocimiento, la aventura y la imaginación. Nuestra misión es fomentar el amor por la lectura y proporcionar un lugar donde todos puedan descubrir y explorar nuevos mundos a través de los libros. Ofrecemos una amplia colección de libros de todos los géneros, desde clásicos literarios hasta las últimas novedades en ciencia ficción, terror, fantasía y más.
+        </p>
+        <p>
+          En la Biblioteca Ramanujuan, creemos que la lectura es una puerta a infinitas posibilidades. Nos esforzamos por crear un ambiente acogedor y estimulante donde cada lector pueda encontrar su próxima gran aventura. Además, organizamos eventos, talleres y actividades para todas las edades, promoviendo el aprendizaje y el crecimiento personal.
+        </p>
+        <p>
+          Te invitamos a explorar nuestras secciones, conocer a tus autores favoritos y sumergirte en el maravilloso mundo de la lectura. ¡Descubre tu próximo libro favorito y comparte la magia de la lectura con nosotros!
+        </p>
+      </div>
+    </div>
+  </div>
+  
+<br><br><br><br><br>
+
+
   <div id="libraryCarousel2" class="carousel slide" data-ride="carousel">
     <ul class="carousel-indicators">
         <li data-target="#libraryCarousel2" data-slide-to="0" class="active"></li>
@@ -118,8 +141,15 @@
 </div>
 
 
+<br><br><br><br>
 
 
+<br><br>
+
+<hr class="my-4">
+
+
+<br><br><br>
 <div class="container mt-5">
   <h1><img src="{% static 'img/lupa.webp' %}" alt="" style="width: 45px; margin-left: 15px;"> Buscador </h1>
   
@@ -134,16 +164,17 @@
                       <img src="{% static 'img/' %}{{ libro.portada }}" class="card-img-top" alt="{{ libro.titulo }}">
                       <div class="card-body">
                           <h5 class="card-title">{{ libro.titulo }}</h5>
-                          <p class="card-autor">{{ libro.autor }}</p>
-                          <p class="card-categoria">{{ libro.categoria }}</p>
-                          <a id="buscarLibroBtn"  href="libros" role="button">Ver más...</a>
+                          <p class="card-autor">Autor: {{ libro.autor }}</p>
+                          <p class="card-categoria">Categoria: {{ libro.categoria }}</p>
+                          <p class="detalles" style="display: none;">Descripcion: {{ libro.descripcion_breve }}</p>
+                          <a class="buscarLibroBtn" href="#" role="button">Ver más...</a>
+                          <a class="verMenos" style="display: none;" href="#" role="button">Ver menos...</a>
                       </div>
                   </div>
-                  
               </div>
           {% endfor %}
       </div>
-      <p id="noResults" style="display: none;">Sin resultados para esta busqueda.</p>
+      <p id="noResults" style="display: none;">Sin resultados para esta búsqueda.</p>
   </div>
 
   <br><br>
@@ -158,9 +189,10 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ autor.nombre }}</h5>
                         <p class="card-text">Nacionalidad: {{ autor.nacionalidad }}</p>
-                        <p class="card-categoria">{{ autor.categoria }}</p>
-                        <a id="buscarAutorBtn " href="autor" role="button">Ver más...</a>
-
+                        <p class="card-categoria">Categoría: {{ autor.categoria }}</p>
+                        <p class="detalles" style="display: none;">Descripcion: {{ autor.descripcion }}</p>
+                        <a class="buscarAutorBtn" href="#" role="button">Ver más...</a>
+                        <a class="verMenos" style="display: none;" href="#" role="button">Ver menos...</a>
                     </div>
                 </div>
             </div>
@@ -172,20 +204,19 @@
     <div class="row" id="seccionCategorias">
         <h2 id="categoriasTitulo" class="col-12">Categorías</h2><br><br><br><br>
         {% for categoria in Categorias %}
-        <div class="col-md-4 libro-card">
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h5 class="card-title">{{ categoria.nombre_categoria }}</h5>
-                    <p class="card-text">{{ categoria.descripcion }}</p>
-                    <a id="buscarCategoriaBtn " href="categoria" role="button">Ver más...</a>
-                </div>
+        <div class="col-md-4 libro-card text-center mb-4">
+            <div class="circular-image">
+                <img src="{% static 'img/' %}{{ categoria.foto_categoria }}" alt="{{ categoria.foto_categoria }}">
             </div>
-            
+            <h5 class="mt-2 card-title">{{ categoria.nombre_categoria }}</h5>
         </div>
-        
         {% endfor %}
     </div>
-  </div><br>
+  </div>
+</div><br>
+
+
+
  
 </div>
 

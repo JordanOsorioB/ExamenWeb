@@ -1,0 +1,25 @@
+ /* Estilos personalizados para la tabla */
+ .custom-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.custom-table th, .custom-table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.custom-table th {
+    background-color: #800000; 
+    color: white; 
+}
+
+.custom-table tr:nth-child(even) {
+    background-color: #800000;  
+    color: white;
+}
+
+.custom-table tr:nth-child(odd) {
+    background-color: #ffffff;
+}
