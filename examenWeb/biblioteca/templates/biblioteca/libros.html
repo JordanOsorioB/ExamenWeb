@@ -22,12 +22,6 @@
     </button>
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 400px;">
-      <form class="form-inline my-4 my-lg-0">
-        <input class="form-control mr-sm-4" type="search" placeholder="Buscar libro por autor o categoria" aria-label="Search" size="35">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar
-          <img src="{% static 'img/lupa.webp' %}" alt="" style="width: 30px; margin-left: 50px;">
-        </button>
-      </form>
 
       <ul class="navbar-nav mr-auto" style="margin-left: auto; margin-right: 0;">
         {% for Navbar in NavItems %}
@@ -73,30 +67,6 @@
 
 
 
-  <div class="container mt-5">
-    <h1>Buscador </h1>
-    <input type="text" id="searchInput" class="form-control" placeholder="Buscar por libro...">
-    <br>
-    <div id="seccionLibros" class="container">
-        <h2 id="librosTitulo">Libros: </h2><br><br>
-        <div class="row" id="librosContainer">
-            {% for libro in Libros %}
-                <div class="col-md-4 libro-card">
-                    <div class="card mb-4 shadow-sm">
-                        <img src="{% static 'img/' %}{{ libro.portada }}" class="card-img-top" alt="{{ libro.titulo }}">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ libro.titulo }}</h5>
-                            <p class="card-text">Autor: {{ libro.autor }}</p>
-                            <p class="card-text">Categoría: {{ libro.categoria }}</p>
-                            <p class="card-text">{{ libro.descripcion_breve }}</p>
-                        </div>
-                    </div>                    
-                </div>
-            {% endfor %}
-        </div>
-        <p id="noResults" style="display: none;">Sin resultados para esta busqueda.</p>
-    </div>
-  </div>
 
 
 

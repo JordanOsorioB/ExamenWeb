@@ -9,6 +9,8 @@
     <link href="{% static 'css/navbar.css' %}" rel="stylesheet">
     <link href="{% static 'css/index.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 
 </head>
@@ -20,17 +22,9 @@
     <a class="navbar-brand" href="index"> 
         <img src="{% static 'img/icono2.png' %}" alt="" style="width: 65px; margin-left: 50px;">    Biblioteca  Ramanujuan
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 400px;">
-      <form class="form-inline my-4 my-lg-0">
-        <input class="form-control mr-sm-4" type="search" placeholder="Buscar libro por autor o categoria" aria-label="Search" size="35">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar
-          <img src="{% static 'img/lupa.webp' %}" alt="" style="width: 30px; margin-left: 15px;">
-        </button>
-      </form>
 
       <ul class="navbar-nav mr-auto" style="margin-left: auto; margin-right: 0;">
         {% for Navbar in NavItems %}
@@ -124,8 +118,16 @@
           <div class="jumbotron text-center custom-bg-3">
               <h1 class="display-4">Bienvenido a la Biblioteca Ramanujuan</h1>
               <p class="lead">Explora tu categoría favorita y descubre nuevas lecturas.</p>
-              <hr class="my-4">
-              <p>Explora nuestras secciones para más información y actividades.</p>
+              <div class="row" id="carrouselCategoria">
+                {% for categoria in Categorias %}
+                <div class="col-lg-3 col-md-4 col-sm-6 libro-card text-center mb-4" data-aos="zoom-in-right">
+                  <div class="imagecarrousel">
+                    <img   src="{% static 'img/' %}{{ categoria.foto_categoria }}" alt="{{ categoria.foto_categoria }}">
+                  </div>
+                  <h5 id="colortituloCat" class="mt-2 card-title">{{ categoria.nombre_categoria }}</h5>
+                </div>
+                {% endfor %}
+              </div>
               <a class="btn btn-primary btn-lg scroll-link" href="#seccionCategorias" role="button">Categorías</a>
           </div>
       </div>
@@ -150,14 +152,14 @@
 
 
 <br><br><br>
-<div class="container mt-5">
-  <h1><img src="{% static 'img/lupa.webp' %}" alt="" style="width: 45px; margin-left: 15px;"> Buscador </h1>
+<div class="container mt-5" id="buscartodo">
+  <h1 id="textobuscador"><img src="{% static 'img/lupa.webp' %}" alt="" style="width: 45px; margin-left: 15px;"> Buscador </h1>
   
   <input type="text" id="searchInput" class="form-control" placeholder="Buscar por libro, autor o categoría...">
   <br>
   <div id="seccionLibros" class="container">
       <h2 id="librosTitulo">Libros: </h2><br><br>
-      <div class="row" id="librosContainer">
+      <div class="row" id="librosContainer" data-aos="zoom-in">
           {% for libro in Libros %}
               <div class="col-md-4 libro-card">
                   <div class="card mb-4 shadow-sm">
@@ -174,7 +176,22 @@
               </div>
           {% endfor %}
       </div>
-      <p id="noResults" style="display: none;">Sin resultados para esta búsqueda.</p>
+      <template id="noResults">
+        <swal-title>
+          ¡Atención! Libro, Autor o Categoría no encontrada
+        </swal-title>
+        <swal-icon type="warning" color="red"></swal-icon>
+        <swal-button type="confirm">
+          Volver al buscador
+        </swal-button>
+        <swal-param name="allowEscapeKey" value="false" />
+        <swal-param
+          name="customClass"
+          value='{ "popup": "my-popup" }' />
+        <swal-function-param
+          name="didOpen"
+          value="popup => console.log(popup)" />
+      </template>
   </div>
 
   <br><br>
@@ -183,7 +200,7 @@
     <h2 id="autoresTitulo">Autores</h2><br><br>
     <div class="row">
         {% for autor in Autores %}
-            <div class="col-md-4 libro-card">
+            <div class="col-md-4 libro-card" data-aos="zoom-in-right">
                 <div class="card mb-4 shadow-sm">
                     <img src="{% static 'img/' %}{{ autor.foto_autor }}" class="card-img-top" alt="{{ autor.foto_autor }}">
                     <div class="card-body">
@@ -200,15 +217,15 @@
     </div>
   </div>
   <br><br>
-  <div class="container mt-5">
+  <div class="container mt-5" >
     <div class="row" id="seccionCategorias">
         <h2 id="categoriasTitulo" class="col-12">Categorías</h2><br><br><br><br>
         {% for categoria in Categorias %}
-        <div class="col-md-4 libro-card text-center mb-4">
+        <div class="col-md-4 libro-card text-center mb-4" data-aos="zoom-in-right">
             <div class="circular-image">
                 <img src="{% static 'img/' %}{{ categoria.foto_categoria }}" alt="{{ categoria.foto_categoria }}">
             </div>
-            <h5 class="mt-2 card-title">{{ categoria.nombre_categoria }}</h5>
+            <h5 id="colortituloCat" class="mt-2 card-title">{{ categoria.nombre_categoria }}</h5>
         </div>
         {% endfor %}
     </div>
@@ -265,11 +282,8 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-<script>
-    AOS.init();
-
-    
-</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="{% static 'js/index.js' %}"></script>
 </body>
 </html>
