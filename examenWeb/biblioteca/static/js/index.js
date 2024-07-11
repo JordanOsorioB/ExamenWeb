@@ -1,49 +1,43 @@
 AOS.init();
 
-document.getElementById("searchInput").addEventListener("input", function () {
-  const query = this.value.toLowerCase();
-  const cards = document.querySelectorAll(".libro-card");
-  const librosTitulo = document.getElementById("librosTitulo");
-  const autoresTitulo = document.getElementById("autoresTitulo");
-  const categoriasTitulo = document.getElementById("categoriasTitulo");
+$("#searchInput").on("input", function () {
+  const query = $(this).val().toLowerCase();
+  const $cards = $(".libro-card");
+  const $librosTitulo = $("#librosTitulo");
+  const $autoresTitulo = $("#autoresTitulo");
+  const $categoriasTitulo = $("#categoriasTitulo");
 
   let hasResults = false;
 
-  cards.forEach((card) => {
-    const titulo = card.querySelector(".card-title").textContent.toLowerCase();
-    const autor = card.querySelector(".card-autor")
-      ? card.querySelector(".card-autor").textContent.toLowerCase()
-      : "";
-    const categoria = card.querySelector(".card-categoria")
-      ? card.querySelector(".card-categoria").textContent.toLowerCase()
-      : "";
+  $cards.each(function () {
+    const $card = $(this);
+    const titulo = $card.find(".card-title").text().toLowerCase();
+    const autor = $card.find(".card-autor").length ? $card.find(".card-autor").text().toLowerCase() : "";
+    const categoria = $card.find(".card-categoria").length ? $card.find(".card-categoria").text().toLowerCase() : "";
 
-    if (
-      titulo.includes(query) ||
-      autor.includes(query) ||
-      categoria.includes(query)
-    ) {
-      card.style.display = "block";
+    if (titulo.includes(query) || autor.includes(query) || categoria.includes(query)) {
+      $card.show();
       hasResults = true;
     } else {
-      card.style.display = "none";
+      $card.hide();
     }
   });
 
   if (query && hasResults) {
-    librosTitulo.style.display = "none";
-    autoresTitulo.style.display = "none";
-    categoriasTitulo.style.display = "none";
+    $librosTitulo.hide();
+    $autoresTitulo.hide();
+    $categoriasTitulo.hide();
   } else if (query && !hasResults) {
     Swal.fire({
       template: "#noResults",
     });
   } else {
-    librosTitulo.style.display = "block";
-    autoresTitulo.style.display = "block";
-    categoriasTitulo.style.display = "block";
+    $librosTitulo.show();
+    $autoresTitulo.show();
+    $categoriasTitulo.show();
   }
 });
+
 
 document.addEventListener("DOMContentLoaded", function () {
   // Obtener todos los botones "Ver más..." y "Ver menos..."

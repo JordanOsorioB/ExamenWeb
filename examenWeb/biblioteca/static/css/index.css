@@ -85,6 +85,21 @@ body{
     padding: 20px;
 }
 
+#searchInput{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: rgb(56, 10, 10);
+  background-color: rgb(212, 212, 212);
+  position: relative;
+  width: 60%;
+  margin: 0;
+  height: 45px;
+  border: 2px solid #000000;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
 #librosTitulo{
     color: antiquewhite;
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -128,4 +143,18 @@ body{
     width: 150px;
     height: 150px;
     border-radius: 20%;
+}
+
+#tituloSobreNosotros{
+  color: #222;
+  text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#TextoSobreNosotros{
+  text-align: center;
+  font-style: italic;
+  line-height: 30pt;
+  font-size: 15pt;
+  color: #222;
 }
