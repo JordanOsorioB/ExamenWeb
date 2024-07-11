@@ -22,7 +22,9 @@
     <a class="navbar-brand" href="index"> 
         <img src="{% static 'img/icono2.png' %}" alt="" style="width: 65px; margin-left: 50px;">    Biblioteca  Ramanujuan
     </a>
-
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 400px;">
 
@@ -100,8 +102,10 @@
           <div class="jumbotron text-center custom-bg-1">
               <h1 class="display-4">Bienvenido a la Biblioteca Ramanujuan</h1>
               <p class="lead">Descubre tu libro favorito y sumérgete en un mundo de conocimiento y aventuras.</p>
-              <hr class="my-4">
-              <p>Explora nuestras secciones para más información y actividades.</p>
+              <img src="{% static 'img/elhobbit.jpg' %}" id="libroCarrousel">
+              <img src="{% static 'img/elhombre.jpg' %}" id="libroCarrousel">
+              <img src="{% static 'img/harryfilosofal.webp' %}" id="libroCarrousel">
+              <br><br>
               <a class="btn btn-primary btn-lg scroll-link" href="#seccionLibros" role="button">Libros</a>
           </div>
       </div>
@@ -109,8 +113,10 @@
           <div class="jumbotron text-center custom-bg-2">
               <h1 class="display-4">Bienvenido a la Biblioteca Ramanujuan</h1>
               <p class="lead">Conoce más sobre tus autores favoritos y sus obras.</p>
-              <hr class="my-4">
-              <p>Explora nuestras secciones para más información y actividades.</p>
+              <img src="{% static 'img/tolkien.webp' %}" id="libroCarrousel">
+              <img src="{% static 'img/rowling.jpg' %}" id="libroCarrousel">
+              <img src="{% static 'img/marquez.jpg' %}" id="libroCarrousel">
+              <br><br>
               <a class="btn btn-primary btn-lg scroll-link" href="#seccionAutores" role="button">Autores</a>
           </div>
       </div>
@@ -118,15 +124,18 @@
           <div class="jumbotron text-center custom-bg-3">
               <h1 class="display-4">Bienvenido a la Biblioteca Ramanujuan</h1>
               <p class="lead">Explora tu categoría favorita y descubre nuevas lecturas.</p>
-              <div class="row" id="carrouselCategoria">
-                {% for categoria in Categorias %}
-                <div class="col-lg-3 col-md-4 col-sm-6 libro-card text-center mb-4" data-aos="zoom-in-right">
-                  <div class="imagecarrousel">
-                    <img   src="{% static 'img/' %}{{ categoria.foto_categoria }}" alt="{{ categoria.foto_categoria }}">
+              <div class="container">
+                  <div class="row" id="carrouselCategoria">
+                    {% for categoria in Categorias %}
+                    <div class="col-lg-2 col-md-3 col-sm-4 libro-card text-center mb-4" data-aos="zoom-in-right">
+                      <div class="imagecarrousel">
+                        <img id="imgcarrousel" src="{% static 'img/' %}{{ categoria.foto_categoria }}"
+                          alt="{{ categoria.foto_categoria }}">
+                      </div>
+                      <h5 id="colortituloCat" class="mt-2 card-title">{{ categoria.nombre_categoria }}</h5>
+                    </div>
+                    {% endfor %}
                   </div>
-                  <h5 id="colortituloCat" class="mt-2 card-title">{{ categoria.nombre_categoria }}</h5>
-                </div>
-                {% endfor %}
               </div>
               <a class="btn btn-primary btn-lg scroll-link" href="#seccionCategorias" role="button">Categorías</a>
           </div>
@@ -143,15 +152,15 @@
 </div>
 
 
-<br><br><br><br>
 
 
-<br><br>
+
+<br>
 
 <hr class="my-4">
 
 
-<br><br><br>
+<br>
 <div class="container mt-5" id="buscartodo">
   <h1 id="textobuscador"><img src="{% static 'img/lupa.webp' %}" alt="" style="width: 45px; margin-left: 15px;"> Buscador </h1>
   

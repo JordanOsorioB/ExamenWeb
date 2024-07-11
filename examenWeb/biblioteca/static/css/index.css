@@ -105,8 +105,27 @@ body{
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-.imagecarrousel{
+#carrouselCategoria{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: hidden;
+    margin-left: 0%;
+    gap: 10px;
+}
+
+#imgcarrousel{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+   
+}
+
+#libroCarrousel{
     width: 150px;
     height: 150px;
-    border-radius: 50%;
+    border-radius: 20%;
 }
