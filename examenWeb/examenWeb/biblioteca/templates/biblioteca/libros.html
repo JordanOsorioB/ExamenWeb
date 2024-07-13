@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link href="{% static 'css/navbar.css' %}" rel="stylesheet">
+    <link href="{% static 'css/index.css' %}" rel="stylesheet">
+    <link href="{% static 'css/libros.css' %}" rel="stylesheet">
+</head>
+<body>
+
+
+  <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+    <a class="navbar-brand" href="index"> 
+        <img src="{% static 'img/icono2.png' %}" alt="" style="width: 65px; margin-left: 50px;"> Biblioteca Ramanujuan
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 400px;">
+
+      <ul class="navbar-nav mr-auto" style="margin-left: auto; margin-right: 0;">
+        {% for Navbar in NavItems %}
+        <li class="nav-item">
+            <a class="nav-link" href="{{ Navbar.url }}">{{ Navbar.titulo }}</a>
+        </li>
+        {% endfor %}
+      </ul>         
+    </div>
+  </nav>
+<br><br><br>
+  <div class="container mt-5" id="buscadorSeccion">
+    <h1 id="textobuscador"><img src="{% static 'img/lupa.webp' %}" alt="" style="width: 45px; margin-left: 15px;"> Buscador </h1>
+    <input type="text" id="searchInput" class="form-control" placeholder="Buscar por libro, autor o categoría..."><br><br>
+</div>
+
+<div class="container mt-5">
+    <h2>Libros</h2>
+    <table class="custom-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Portada</th>
+                <th>Título</th>
+                <th>Autor</th>
+                <th>Categoría</th>
+                <th>Descripción</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for libro in Libros %}
+            <tr>
+                <td>{{ libro.id_libro }}</td>
+                <td><img src="{% static 'img/' %}{{ libro.portada }}" alt="{{ libro.titulo }}" style="width: 50px;"></td>
+                <td>{{ libro.titulo }}</td>
+                <td>{{ libro.autor }}</td>
+                <td>{{ libro.categoria }}</td>
+                <td>{{ libro.descripcion_breve }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p id="noResults" style="display: none;">Sin resultados para esta búsqueda.</p>
+
+</div>
+
+
+
+
+
+
+<br><br><br><br><br><br>
+
+
+
+  <footer class="bg-dark text-white mt-5">
+    <div class="container py-4">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+          <h5 class="font-weight-bold text-uppercase">Enlaces rápidos</h5>
+          <ul class="list-unstyled">       
+          {% for Navbar in NavItems %}
+          <li>
+            <a href="{{ Navbar.url }}" class="text-white">{{ Navbar.titulo }}</a>
+          </li>
+          {% endfor %}
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+          <h5 class="font-weight-bold text-uppercase">Redes Sociales</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-white">Facebook</a></li>
+            <li><a href="#" class="text-white">Twitter</a></li>
+            <li><a href="#" class="text-white">Instagram</a></li>
+            <li><a href="#" class="text-white">LinkedIn</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+          <h5 class="font-weight-bold text-uppercase">Derechos de Autor</h5>
+          <p class="mb-0">&copy; 2024 Biblioteca Ramanujuan. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="{% static 'js/libro.js' %}"></script>
+</body>
+</html>

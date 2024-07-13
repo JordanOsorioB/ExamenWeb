@@ -1,0 +1,41 @@
+ /* Estilos personalizados para la tabla */
+ .custom-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.custom-table th, .custom-table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.custom-table th {
+    background-color: #800000; 
+    color: white; 
+}
+
+.custom-table tr:nth-child(even) {
+    background-color: #800000;  
+    color: white;
+}
+
+.custom-table tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+#buscadorSeccion {
+    background-color: #8B0000; 
+    border-radius: 25px;
+    margin-bottom: 20px;
+}
+
+#textobuscador {
+    color: #F5F5F5; 
+}
+
+#searchInput {
+    border: 2px solid #F5F5F5;
+    border-radius: 20px;
+    margin-top: 10px;
+    width: 100%;
+}

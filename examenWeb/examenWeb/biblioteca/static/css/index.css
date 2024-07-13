@@ -1,0 +1,160 @@
+body{
+    background-color: rgb(222, 222, 222);
+}
+
+/* Carrusel */
+
+.carousel-inner img {
+  height: 862px;
+  object-fit: cover;
+}
+
+/*Carrusel jumbotron*/
+
+.jumbotron.custom-bg-1 {
+  background-color: #7c1101;
+  color: white;
+}
+
+.jumbotron.custom-bg-2 {
+  background-color: #860000;
+  color: white;
+}
+
+.jumbotron.custom-bg-3 {
+  background-color: #a80000;
+  color: white;
+}
+
+/* Tarjeta de libros, autores y categorias*/
+
+.card {
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-img-top {
+  max-width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
+.circular-image {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.circular-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease-in-out;
+}
+
+.circular-image:hover {
+  transform: scale(1.1);
+}
+
+.circular-image:hover img {
+  transform: scale(1.1);
+}
+
+/*Estilo fondo de buscador*/
+
+
+#buscartodo {
+    background-color: #7c1101;
+    border-radius: 30px;
+}
+
+#textobuscador {
+    color: antiquewhite;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 20px;
+}
+
+#searchInput{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: rgb(56, 10, 10);
+  background-color: rgb(212, 212, 212);
+  position: relative;
+  width: 60%;
+  margin: 0;
+  height: 45px;
+  border: 2px solid #000000;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+#librosTitulo{
+    color: antiquewhite;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#autoresTitulo{
+    color: antiquewhite;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#categoriasTitulo{
+    color: antiquewhite;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#colortituloCat{
+    color: antiquewhite;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#carrouselCategoria{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: hidden;
+    margin-left: 0%;
+    gap: 10px;
+}
+
+#imgcarrousel{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+   
+}
+
+#libroCarrousel{
+    width: 150px;
+    height: 150px;
+    border-radius: 20%;
+}
+
+#tituloSobreNosotros{
+  color: #222;
+  text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#TextoSobreNosotros{
+  text-align: center;
+  font-style: italic;
+  line-height: 30pt;
+  font-size: 15pt;
+  color: #222;
+}
